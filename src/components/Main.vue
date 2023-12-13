@@ -11,15 +11,11 @@
   </v-sheet>
 </template>
 
-<script>
+<script setup>
 
-import {defineComponent} from "vue";
 import MarcheImage from "@/components/MarcheImage.vue";
 import LesMarchesSection from "@/components/LesMarchesSection.vue";
 import LesProducteursSection from "@/components/LesProducteursSection.vue";
 
-export default defineComponent({
-  components: {LesProducteursSection, LesMarchesSection, MarcheImage}
-})
 </script>
 
