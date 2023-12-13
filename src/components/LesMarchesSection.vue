@@ -1,7 +1,6 @@
 <template>
   <v-col
     cols="12"
-    color="white"
     elevation="0"
     class="pt-16"
   >
@@ -20,6 +19,7 @@
             row
             wrap
             class="align-start"
+            style="background-color: #e0fce4"
           >
             <v-card
               v-for="marche in getLimitedMarches(marches, 3)"

@@ -1,7 +1,6 @@
 <template>
     <v-col
             cols="12"
-            color="white"
             elevation="0"
             class="pt-16"
     >

@@ -1,37 +1,53 @@
 <template>
-  <v-layout>
-    <v-app-bar
-      :elevation="4"
-      color="white"
-      class="d-flex justify-space-between align-center"
-    >
+  <v-container
+  class="mt-8"
+  color="brown-lighten-5"
+  >
+    <v-row justify="space-between">
       <h2
-      style="width: 300px"
+        class="mx-8"
       >
-        <img
-          alt="Vuetify Logo"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          height="30"
-        />
-        Les joyeuses noix
+        Marchés joyeux
       </h2>
-      <div>
-        <v-btn>
-          LES MARCHES
-        </v-btn>
-        <v-btn>
-          LES PRODUCTEURS
+      <div
+      class="w-50 d-flex justify-content-center align-items-center"
+      >
+
+      <v-text-field
+        autofocus
+        class="mx-4"
+        bg-color="white"
+        placeholder="Adresse"
+        variant="outlined"
+        single-line
+        prepend-inner-icon="mdi-magnify"
+        density="compact"
+      >
+      </v-text-field>
+
+      <v-text-field
+        class="mx-4"
+        bg-color="white"
+        placeholder="Date"
+        variant="outlined"
+        single-line
+        prepend-inner-icon="mdi-calendar"
+        density="compact"
+      >
+      </v-text-field>
+        <v-btn
+          class="mx-4 text-white"
+          style="background-color: #18542c"
+          icon="mdi-magnify"
+          size="small"
+        >
         </v-btn>
       </div>
-      <template v-slot:append>
-        <v-btn icon="mdi-magnify"></v-btn>
-
-        <v-btn icon="mdi-dots-vertical"></v-btn>
-      </template>
-    </v-app-bar>
-  </v-layout>
+    </v-row>
+  </v-container>
 
 </template>
 
 <script setup>
+
 </script>
