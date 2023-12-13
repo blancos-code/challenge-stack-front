@@ -19,6 +19,7 @@ export default defineConfig({
       styles: {
         configFile: 'src/styles/settings.scss',
       },
+
     }),
     ViteFonts({
       google: {

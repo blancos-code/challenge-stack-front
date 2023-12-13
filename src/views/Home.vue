@@ -1,10 +1,12 @@
 <template>
-  <HelloWorld />
+  <AppBar />
+  <Main />
 </template>
 
 <script setup>
-  import HelloWorld from '@/components/HelloWorld.vue'
+  import Main from '@/components/Main.vue'
   import axios from "axios";
+  import AppBar from "@/layouts/default/AppBar.vue";
 
   async function handleDeadBackend() {
     let response = '';
