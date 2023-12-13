@@ -232,7 +232,4 @@
     </v-container>
 </template>
 <script>
-export default {
-    name: 'LesProducteursSection'
-}
 </script>
