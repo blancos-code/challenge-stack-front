@@ -33,6 +33,7 @@
         single-line
         prepend-inner-icon="mdi-calendar"
         density="compact"
+        type="date"
       >
       </v-text-field>
         <v-btn
