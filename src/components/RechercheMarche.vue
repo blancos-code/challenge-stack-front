@@ -1,4 +1,5 @@
  <template>
+    <AppHeader/>
     <v-app>
             <v-container class="mt-5">
                 <!-- Barre de recherche -->
@@ -42,6 +43,7 @@
     </v-app>
   </template>
   <script setup props="searchedDate, searchLocation">
+  import AppHeader from './../views/AppHeader.vue';
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
     import { storeToRefs } from 'pinia';

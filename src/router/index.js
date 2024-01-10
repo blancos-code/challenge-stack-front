@@ -26,6 +26,28 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/Producteurs",
+    component: () => import("@/components/RechercheMarche.vue"),
+    children: [
+      {
+        path: "",
+        name: "RechercheMarche",
+        component: () => import("@/components/RechercheMarche.vue"),
+      },
+    ],
+  },
+  {
+    path: "/Marches",
+    component: () => import("@/components/RechercheMarche.vue"),
+    children: [
+      {
+        path: "",
+        name: "RechercheMarche",
+        component: () => import("@/components/RechercheMarche.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

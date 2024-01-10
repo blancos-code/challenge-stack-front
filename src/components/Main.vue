@@ -47,6 +47,9 @@
 </script>
 
 <style>
+h1{
+  color: #18542c;
+}
 body {
   background-color: #EFEBE9;
 }
