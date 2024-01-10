@@ -17,7 +17,7 @@
         autofocus
         class="mx-4"
         bg-color="white"
-        v-model="searchLocation"
+        v-model="searchedLocation"
         placeholder="Adresse"
         variant="outlined"
         single-line
@@ -25,12 +25,11 @@
         density="compact"
       >
       </v-text-field>
-
       <v-text-field
         class="mx-4"
         bg-color="white"
         placeholder="Date"
-        v-model="searchDate"
+        v-model="searchedDate"
         variant="outlined"
         single-line
         prepend-inner-icon="mdi-calendar"
@@ -40,7 +39,7 @@
       </v-text-field>
         <v-btn
           class="mx-4 text-white"
-          onclick="rechercherMarche()"
+          @click="rechercheMarche()"
           style="background-color: #18542c"
           icon="mdi-magnify"
           size="small"
@@ -56,12 +55,17 @@
 <script setup>
 import router from '@/router';
 import {ref} from 'vue';
-const   searchDate = ref('');
-const  searchLocation = ref('');
-function rechercherMarche(){
-  router.push({ name: 'RechercheMarche', params: { searchDate: searchDate,  searchLocation: searchLocation} });
+const   searchedDate = ref('');
+const  searchedLocation = ref('');
+function rechercheMarche(){
+  console.log("searched value", searchedDate, searchedLocation);
+  router.push({ 
+    name: 'RechercheMarche', 
+    params: { 
+      searchedDate: searchedDate.value,  
+      searchedLocation: searchedLocation.value
+    } 
+  });
+
 }
-// function rechercheMarche(){
-//   router.push({ name: 'RechercheMarche', params: { searchDate: searchDate,  searchLocation: searchLocation} })
-// }
 </script>

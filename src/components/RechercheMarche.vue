@@ -41,12 +41,11 @@
             </v-container>
     </v-app>
   </template>
-  <script setup>
+  <script setup props="searchedDate, searchLocation">
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
     import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
-//import { computed } from 'vue';
     import { ref } from 'vue';
     const items = ref([
         {
@@ -64,15 +63,16 @@ import { onMounted } from 'vue';
     const marcheStore = useMarchesStore();
     const {marches} = storeToRefs(marcheStore);
     const marchesFiltres = ref([]);
-    const   searchDate = ref('');
-    const  searchLocation = ref('');
     const  search = ref('');
+    const searchDate = ref('');
+    const searchLocation = ref('');
     const  headers = ref([
           {title: 'Nom', key: 'nom'  },
           {title: 'Date début', key: 'dateDebut'},
           {title: 'Date fin', key: 'dateFin'},
           {title: 'Adresse', key: 'adresse'  },
         ]);
+    const props = defineProps(['searchedDate', 'searchedLocation']);
     function filteredMarkets(){        
         marchesFiltres.value = marches?.value?.filter(marche => {
           const dateMatch = searchDate.value ? marche.dateDebut === searchDate.value || marche.dateFin === searchDate.value : true;
@@ -86,17 +86,16 @@ import { onMounted } from 'vue';
       }
 
       onMounted(async () => {
-      
+       console.log('props', props.value);
+      console.log('searched date : ', props.searchedDate);
+      console.log('searched location : ', props.searchedLocation);
       await getMarches().then((res) => {
           marches.value = res["hydra:member"];
-
-          console.log("value", marches.value);
           filteredMarkets();
         });
 
     });
   </script>
-  
   <style scoped>
 
   .v-application{
