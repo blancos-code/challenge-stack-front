@@ -28,23 +28,23 @@ const routes = [
   },
   {
     path: "/Producteurs",
-    component: () => import("@/components/RechercheMarche.vue"),
+    component: () => import("@/components/Producteurs.vue"),
     children: [
       {
         path: "",
-        name: "RechercheMarche",
-        component: () => import("@/components/RechercheMarche.vue"),
+        name: "Producteurs",
+        component: () => import("@/components/Producteurs.vue"),
       },
     ],
   },
   {
     path: "/Marches",
-    component: () => import("@/components/RechercheMarche.vue"),
+    component: () => import("@/components/Marches.vue"),
     children: [
       {
         path: "",
-        name: "RechercheMarche",
-        component: () => import("@/components/RechercheMarche.vue"),
+        name: "Marches",
+        component: () => import("@/components/Marches.vue"),
       },
     ],
   },
