@@ -13,6 +13,7 @@
             </h2>
             <a class="mx-8" href="/producteurs">Producteurs</a>
             <a class="mx-8" href="/marches">Marchés</a>
+            <button class="connexion">Connexion</button>
             </v-row>
         </v-container>
     </header>
@@ -30,6 +31,11 @@ header {
  height: 5rem;
  display: flex;
  align-content: center;
+}
+.connexion{
+    position: absolute;
+    right : 2rem;
+    top : 1.5rem;
 }
 
 .container-header{
