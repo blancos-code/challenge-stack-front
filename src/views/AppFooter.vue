@@ -33,8 +33,6 @@ export default {
 </script>
 <style>
   footer{
-    position:sticky;
-    bottom: 0;
     width: 100%;
   }
 </style>
