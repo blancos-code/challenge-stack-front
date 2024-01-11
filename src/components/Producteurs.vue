@@ -15,9 +15,11 @@
         
             </v-container>
     </v-app>
+    <AppFooter />
   </template>
   <script setup props="searchedDate, searchLocation">
   import AppHeader from './../views/AppHeader.vue';
+  import AppFooter from '@/views/AppFooter.vue';
 
     import { ref } from 'vue';
     const items = ref([

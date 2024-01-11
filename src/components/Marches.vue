@@ -56,9 +56,11 @@
         
             </v-container>
     </v-app>
+    <AppFooter />
   </template>
   <script setup props="searchedDate, searchLocation">
     import AppHeader from './../views/AppHeader.vue';
+    import AppFooter from '@/views/AppFooter.vue';
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
     import { storeToRefs } from 'pinia';
