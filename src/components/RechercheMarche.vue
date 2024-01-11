@@ -23,7 +23,7 @@
                     <v-col cols="12" md="6">
                         <v-text-field
                         v-model="searchLocation"
-                        label="Rechercher par lieu"
+                        label="Rechercher"
                         outlined
                         @update:model-value="filteredMarkets()"
                         ></v-text-field>
@@ -42,7 +42,7 @@
             </v-container>
     </v-app>
   </template>
-  <script setup props="searchedDate, searchLocation">
+  <script setup>
   import AppHeader from './../views/AppHeader.vue';
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
@@ -74,29 +74,20 @@ import { onMounted } from 'vue';
           {title: 'Date fin', key: 'dateFin'},
           {title: 'Adresse', key: 'adresse'  },
         ]);
-    const props = defineProps(['searchedDate', 'searchedLocation']);
     function filteredMarkets(){        
         marchesFiltres.value = marches?.value?.filter(marche => {
-          const dateMatch = searchDate.value ? marche.dateDebut === searchDate.value || marche.dateFin === searchDate.value : true;
+          const dateMatch = searchDate.value ? marche.dateDebut.includes(searchDate.value) || marche.dateFin.includes(searchDate.value) : true;
           const locationMatch = searchLocation.value ? marche.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
-         console.log("date match", dateMatch);
-         console.log("searchDate.value", searchDate.value);
-         console.log("marche.dateDebut", marche.dateDebut);
-          console.log("locationMatch", locationMatch);
-          return locationMatch;
+          return locationMatch && dateMatch;
         })
       }
 
       onMounted(async () => {
-       console.log('props', props.value);
-      console.log('searched date : ', props.searchedDate);
-      console.log('searched location : ', props.searchedLocation);
-      await getMarches().then((res) => {
-          marches.value = res["hydra:member"];
-          filteredMarkets();
-        });
-
-    });
+        await getMarches().then((res) => {
+            marches.value = res["hydra:member"];
+            filteredMarkets();
+          });
+      });
   </script>
   <style scoped>
 
