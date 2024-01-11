@@ -10,7 +10,7 @@
                   </template>
                 </v-breadcrumbs>
                 <p>Retrouvez vos producteurs préférés aux différents marchés.</p>
-                <v-row class="mt-5" v-if="marches?.length > 0">
+                <v-row class="mt-5" v-if="marches.length > 0">
                     <v-col cols="12" md="6">
                         <v-text-field
                         v-model="searchDate"
@@ -34,8 +34,9 @@
                       class="mx-auto"
                       max-width="344"
                       hover 
-                      :v-for="{ market } in marchesFiltres"
+                      :v-for="market in marchesFiltres"
                     >
+                    <p>{{ market }}</p>
                       <v-card-item>
                         <v-card-title>
                           {{market.nom}}
@@ -45,7 +46,7 @@
                         </v-card-subtitle>
                       </v-card-item>
                       <v-card-text>
-                        <img :src="market.image" :alt="market.nom">
+                        {{ market.dateDebut }} - {{ market.dateFin }}
                       </v-card-text>
                     </v-card>                  
                 </v-container>
@@ -86,15 +87,19 @@
     const searchDate = ref('');
     const searchLocation = ref('');
       function filteredMarkets(){
-        console.log('marches', marches.value);
-        console.log('marchesFiltres', marchesFiltres.value);
-        if(searchDate.value !== '' || searchLocation.value !== ''){
+        console.log("marche", marches.value);
+        if(searchDate.value || searchLocation.value ){
+          console.log('if');
           marchesFiltres.value = marches?.value?.filter(marche => {
             const dateMatch = searchDate.value ? marche.dateDebut.includes(searchDate.value) || marche.dateFin.includes(searchDate.value) : true;
             const locationMatch = searchLocation.value ? marche.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
+            console.log('filtered', marchesFiltres.value);
             return locationMatch && dateMatch;
           });
         }else{
+          console.log('filtered', marchesFiltres.value);
+          marchesFiltres.value = marches.value;
+          console.log('filtered', marchesFiltres.value);
           return marches.value;
         }       
     
