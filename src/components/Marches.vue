@@ -85,12 +85,19 @@
     //const  search = ref('');
     const searchDate = ref('');
     const searchLocation = ref('');
-      function filteredMarkets(){        
+      function filteredMarkets(){
+        console.log('marches', marches.value);
+        console.log('marchesFiltres', marchesFiltres.value);
+        if(searchDate.value !== '' || searchLocation.value !== ''){
           marchesFiltres.value = marches?.value?.filter(marche => {
             const dateMatch = searchDate.value ? marche.dateDebut.includes(searchDate.value) || marche.dateFin.includes(searchDate.value) : true;
             const locationMatch = searchLocation.value ? marche.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
             return locationMatch && dateMatch;
-          })
+          });
+        }else{
+          return marches.value;
+        }       
+    
         }
 
       onMounted(async () => {
