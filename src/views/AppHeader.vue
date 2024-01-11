@@ -6,10 +6,10 @@
     >
             <v-row>
         
-                <h2
+            <h2
                 class="mr-8"
-            >
-                Marchés joyeux
+            ><a href="/">Marchés joyeux</a>
+                
             </h2>
             <a class="mx-8" href="/producteurs">Producteurs</a>
             <a class="mx-8" href="/marches">Marchés</a>
