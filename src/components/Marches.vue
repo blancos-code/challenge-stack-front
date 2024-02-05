@@ -33,7 +33,7 @@
                     <v-card
                       class="mx-auto"
                       max-width="344"
-                      hover 
+                      hover
                       :v-for="market in marchesFiltres"
                     >
                     <p>{{ market }}</p>
@@ -48,20 +48,20 @@
                       <v-card-text>
                         {{ market.dateDebut }} - {{ market.dateFin }}
                       </v-card-text>
-                    </v-card>                  
+                    </v-card>
                 </v-container>
                 <p v-else-if="marches === undefined || marches?.length === 0" class="mt-5 no-data-found">Il n'a pas de marchés...</p>
-                
+
                 <p v-else class="mt-5 no-data-found">Il n'a pas de marché correspondant à votre recherche...</p>
-                
-        
+
+
             </v-container>
     </v-app>
     <AppFooter />
   </template>
   <script setup props="searchedDate, searchLocation">
-    import AppHeader from './../views/AppHeader.vue';
-    import AppFooter from '@/views/AppFooter.vue';
+    import AppHeader from '../layouts/AppHeader.vue';
+    import AppFooter from '@/layouts/AppFooter.vue';
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
     import { storeToRefs } from 'pinia';
@@ -101,8 +101,8 @@
           marchesFiltres.value = marches.value;
           console.log('filtered', marchesFiltres.value);
           return marches.value;
-        }       
-    
+        }
+
         }
 
       onMounted(async () => {
@@ -111,7 +111,7 @@
             filteredMarkets();
           });
       });
-    
+
   </script>
   <style scoped>
 
@@ -129,4 +129,3 @@
     text-decoration: none;
   }
   </style>
-  

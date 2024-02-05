@@ -29,7 +29,7 @@
                         ></v-text-field>
                     </v-col>
                 </v-row>
-    
+
             <!-- Résultats de la recherche -->
             <v-data-table
                 :headers="headers"
@@ -37,16 +37,16 @@
                 :search="search"
                 class="elevation-1"
                 >
-            </v-data-table> 
-        
+            </v-data-table>
+
             </v-container>
 
     </v-app>
     <AppFooter />
   </template>
   <script setup>
-  import AppHeader from './../views/AppHeader.vue';
-  import AppFooter from '@/views/AppFooter.vue';
+  import AppHeader from '../layouts/AppHeader.vue';
+  import AppFooter from '@/layouts/AppFooter.vue';
     import { getMarches } from '@/conf/api/marche';
     import { useMarchesStore } from '@/store/marches';
     import { storeToRefs } from 'pinia';
@@ -77,7 +77,7 @@ import { onMounted } from 'vue';
           {title: 'Date fin', key: 'dateFin'},
           {title: 'Adresse', key: 'adresse'  },
         ]);
-    function filteredMarkets(){        
+    function filteredMarkets(){
         marchesFiltres.value = marches?.value?.filter(marche => {
           const dateMatch = searchDate.value ? marche.dateDebut.includes(searchDate.value) || marche.dateFin.includes(searchDate.value) : true;
           const locationMatch = searchLocation.value ? marche.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
@@ -110,4 +110,3 @@ import { onMounted } from 'vue';
     text-decoration: none;
   }
   </style>
-  

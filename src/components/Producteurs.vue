@@ -10,16 +10,16 @@
                   </template>
                 </v-breadcrumbs>
                 <p>Parcourez les différents producteurs et retrouvez-les aux marchés.</p>
-    
-            
-        
+
+
+
             </v-container>
     </v-app>
     <AppFooter />
   </template>
   <script setup props="searchedDate, searchLocation">
-  import AppHeader from './../views/AppHeader.vue';
-  import AppFooter from '@/views/AppFooter.vue';
+  import AppHeader from '../layouts/AppHeader.vue';
+  import AppFooter from '@/layouts/AppFooter.vue';
 
     import { ref } from 'vue';
     const items = ref([
@@ -35,8 +35,8 @@
         }
     ])
     const primaryColor = '#18542c';
-    
-    
+
+
   </script>
   <style scoped>
 

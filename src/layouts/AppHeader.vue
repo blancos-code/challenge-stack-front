@@ -5,16 +5,21 @@
     color="brown-lighten-5"
     >
             <v-row>
-        
+
             <h2
                 class="mr-8"
-            ><a href="/">Marchés joyeux</a>
-                
+            ><a href="/public">Marchés joyeux</a>
+
             </h2>
             <a class="mx-8" href="/producteurs">Producteurs</a>
             <a class="mx-8" href="/marches">Marchés</a>
-            <button class="connexion">Connexion</button>
             </v-row>
+            <v-btn
+              class="connexion"
+              prepend-icon="mdi-account"
+            >
+              Connexion
+            </v-btn>
         </v-container>
     </header>
 </template>
@@ -28,14 +33,13 @@ header {
  top: 0;
  background-color: #ffffff;
  width: 100%;
- height: 5rem;
+ height: 4rem;
  display: flex;
  align-content: center;
 }
 .connexion{
     position: absolute;
     right : 2rem;
-    top : 1.5rem;
 }
 
 .container-header{
@@ -54,4 +58,3 @@ header {
     margin-bottom: auto;
   }
   </style>
-  
