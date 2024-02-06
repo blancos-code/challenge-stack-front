@@ -11,8 +11,4 @@ import AppFooter from "@/layouts/AppFooter.vue";
 import AppHeader from '../layouts/AppHeader.vue';
 
 handleDeadBackend();
-
-
-
-
 </script>

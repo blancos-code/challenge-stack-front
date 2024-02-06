@@ -27,6 +27,17 @@ const routes = [
     ],
   },
   {
+    path: "/rechercheproducteur",
+    component: () => import("@/components/RechercheProducteur.vue"),
+    children: [
+      {
+        path: "",
+        name: "RechercheProducteur",
+        component: () => import("@/components/RechercheProducteur.vue"),
+      },
+    ],
+  },
+  {
     path: "/Producteurs",
     component: () => import("@/components/Producteurs.vue"),
     children: [

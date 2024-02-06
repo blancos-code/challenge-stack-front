@@ -8,11 +8,21 @@
 
             <h2
                 class="mr-8"
-            ><a href="/public">Marchés joyeux</a>
+            ><a href="/">Marchés joyeux</a>
 
             </h2>
-            <a class="mx-8" href="/producteurs">Producteurs</a>
-            <a class="mx-8" href="/marches">Marchés</a>
+            <v-btn
+                class="text-white btn-header"
+                :to="{name: 'RechercheProducteur'}"
+            >
+            Producteurs
+            </v-btn>
+            <v-btn
+                class="text-white btn-header"
+                :to="{name: 'RechercheMarche'}"
+            >
+            Marchés
+            </v-btn>
             </v-row>
             <v-btn
               class="connexion"
@@ -29,6 +39,12 @@ export default {
 }
 </script>
 <style scoped>
+.btn-header{
+    background-color: none !important;
+    border:none;
+    box-shadow: none;
+    color:#18542c !important;
+}
 header {
  top: 0;
  background-color: #ffffff;
