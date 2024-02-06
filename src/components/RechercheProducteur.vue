@@ -33,7 +33,7 @@
             <!-- Résultats de la recherche -->
             <v-data-table
                 :headers="headers"
-                :items="marchesFiltres"
+                :items="producteursFiltres"
                 :search="search"
                 class="elevation-1"
                 >
@@ -47,8 +47,8 @@
   <script setup>
   import AppHeader from '../layouts/AppHeader.vue';
   import AppFooter from '@/layouts/AppFooter.vue';
-    import { getMarches } from '@/conf/api/marche';
-    import { useMarchesStore } from '@/store/marches';
+    import { getProducteurs } from '@/conf/api/producteur';
+    import { useProducteursStore } from '@/store/producteurs';
     import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
     import { ref } from 'vue';
@@ -65,10 +65,10 @@ import { onMounted } from 'vue';
         }
     ])
     const primaryColor = '#18542c';
-    const marcheStore = useMarchesStore();
-    const {marches} = storeToRefs(marcheStore);
-    const marchesFiltres = ref([]);
-    const  search = ref('');
+    const producteursStore = useProducteursStore();
+    const {producteurs} = storeToRefs(producteursStore);
+    const producteursFiltres = ref([]);
+    const search = ref('');
     const searchDate = ref('');
     const searchLocation = ref('');
     const  headers = ref([
@@ -78,16 +78,16 @@ import { onMounted } from 'vue';
           {title: 'Adresse', key: 'adresse'  },
         ]);
     function filteredMarkets(){
-        marchesFiltres.value = marches?.value?.filter(marche => {
-          const dateMatch = searchDate.value ? marche.dateDebut.includes(searchDate.value) || marche.dateFin.includes(searchDate.value) : true;
-          const locationMatch = searchLocation.value ? marche.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
+        producteursFiltres.value = producteurs?.value?.filter(producteur => {
+          const dateMatch = searchDate.value ? producteur.dateDebut.includes(searchDate.value) || producteur.dateFin.includes(searchDate.value) : true;
+          const locationMatch = searchLocation.value ? producteur.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
           return locationMatch && dateMatch;
         })
       }
 
       onMounted(async () => {
-        await getMarches().then((res) => {
-            marches.value = res["hydra:member"];
+        await getProducteurs().then((res) => {
+            producteurs.value = res["hydra:member"];
             filteredMarkets();
           });
       });
