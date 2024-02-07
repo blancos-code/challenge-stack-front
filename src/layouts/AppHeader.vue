@@ -1,8 +1,9 @@
 <template>
     <header>
         <v-container
-    class="px-4 container-header"
-    color="brown-lighten-5"
+        class="px-4 container-header"
+        color="brown-lighten-5"
+        elevation="1"
     >
             <v-row>
 
@@ -26,10 +27,16 @@
             </v-row>
             <v-btn
               class="connexion"
-              prepend-icon="mdi-account"
+              prepend-icon="mdi-login"
             >
               Connexion
             </v-btn>
+          <v-btn
+            class="signup"
+            prepend-icon="mdi-account"
+          >
+            S'inscrire
+          </v-btn>
         </v-container>
     </header>
 </template>
@@ -55,7 +62,14 @@ header {
 }
 .connexion{
     position: absolute;
-    right : 2rem;
+    right : 12rem;
+}
+
+.signup {
+  position: absolute;
+  right: 2rem;
+  background-color: #18542c;
+  color: white;
 }
 
 .container-header{

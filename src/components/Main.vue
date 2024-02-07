@@ -1,6 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <v-container>
+  <v-container
+    class="d-flex flex-row justify-content-between"
+  >
     <v-sheet
       color="brown-lighten-5"
       class="ms-6 d-flex align-center flex-wrap mx-auto px-4"
@@ -13,9 +15,8 @@
         <h3
           class="text-grey font-weight-light"
         >
-          Trouvez un marché près de chez vous. Pas de chez vous ? <br>
-          Pas de soucis, on vous offre une maison contre votre âme. <br>
-          Joyeux deal !
+          Faites vivre l'économie locale en explorant les produits uniques et artisanaux
+          de vos commerçants de proximité, réunis en un seul endroit pour simplifier votre expérience d'achat
         </h3>
         <v-sheet
           class="d-flex align-center mt-4"
@@ -37,6 +38,12 @@
         </v-sheet>
       </div>
     </v-sheet>
+    <v-img
+      src="elMarche.jpg"
+      alt="Description"
+      width="600"
+    >
+    </v-img>
   </v-container>
 </template>
 

@@ -38,7 +38,7 @@
       </div>
     </v-sheet>
     <v-img
-      src="../assets/elMarche.jpg"
+      src="elMarche.jpg"
       alt="Description"
       width="600"
     >
