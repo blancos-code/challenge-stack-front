@@ -47,8 +47,9 @@
                 <v-divider></v-divider>
                 <v-card-text>
                   <p> Description: </p>
-                  {{producteur.description}}
+                  
                 </v-card-text>
+                <v-card-text v-html="producteur.description"></v-card-text>
                 <v-divider></v-divider>
                 <v-card-text
                   class="adresse"

@@ -2,12 +2,13 @@
     <AppHeader/>
     <v-app>
             <v-container class="mt-5">
-                <h1>Producteur</h1>
+                <h1>{{ producteur.utilisateur.prenom }} {{ producteur.utilisateur.nom }}</h1>
                  <v-breadcrumbs :items="items">
                   <template v-slot:item="props">
                     <a :href="'/'+props.item.href" :class="[props.item.disabled && 'disabled']">{{ props.item.text }}</a>
                   </template>
                 </v-breadcrumbs>
+                <p v-html="producteur.description"></p>
             </v-container>
       
     </v-app>
@@ -16,7 +17,7 @@
   <script setup>
     import AppHeader from '../layouts/AppHeader.vue';
     import AppFooter from '@/layouts/AppFooter.vue';
-    import {getProducteur} from '@/conf/api/producteurs';
+    import {getProducteur} from '@/conf/api/producteur';
     import { onMounted } from 'vue';
     import { ref } from 'vue';
     import {useRoute} from "vue-router";
@@ -35,7 +36,7 @@
         }
     ])
 
-   const producteur = ref(null);
+   const producteur = ref("");
      
     async function getProducteurFromId(id) {
         producteur.value = await getProducteur(id);

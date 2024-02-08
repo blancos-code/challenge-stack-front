@@ -73,13 +73,7 @@ const routes = [
   {
     path: "/producteur/:id",
     component: () => import("@/components/ProducteurPage.vue"),
-    children: [
-      {
-        path: "",
-        name: "Producteur",
-        component: () => import("@/components/ProducteurPage.vue"),
-      },
-    ],
+    name: "Producteur",
   },
 ];
 
