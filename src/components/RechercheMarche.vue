@@ -131,7 +131,7 @@ function formatDate(date) {
 }
 
 function searchMaps(adresse) {
-  document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
+  window.open('https://www.google.fr/maps/search/' + adresse + '/').focus();
 }
 
 function openMarche(marcheId) {

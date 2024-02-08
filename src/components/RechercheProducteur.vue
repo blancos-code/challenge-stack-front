@@ -82,7 +82,7 @@ import { onMounted } from 'vue';
   const loaderStore = useLoaderStore();
 
   function searchMaps(adresse) {
-    document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
+    window.open('https://www.google.fr/maps/search/' + adresse + '/', '_blank').focus();
   }
 
   function openProducteur(producteurId) {
