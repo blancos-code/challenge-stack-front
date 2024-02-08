@@ -16,6 +16,17 @@ const routes = [
     ],
   },
   {
+    path: "/profil",
+    component: () => import("@/components/ProfilPage.vue"),
+    children: [
+      {
+        path: "",
+        name: "ProfilPage",
+        component: () => import("@/components/ProfilPage.vue"),
+      },
+    ],
+  },
+  {
     path: "/recherchemarche",
     component: () => import("@/components/RechercheMarche.vue"),
     children: [
