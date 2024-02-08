@@ -71,7 +71,7 @@ const routes = [
     ],
   },
   {
-    path: "/Producteur/:id",
+    path: "/producteur/:id",
     component: () => import("@/components/ProducteurPage.vue"),
     children: [
       {

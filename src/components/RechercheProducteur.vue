@@ -36,7 +36,7 @@
                 v-bind:key="producteur"
                 class="mb-8 card"
                 style="width: 48%;"
-                @click.prevent="openProducteur(producteur.id)"
+                :to="{name: 'Producteur', params: { id: producteur.id }}"
               >
                 <v-card-title
                   class="text-green"
@@ -45,8 +45,10 @@
                    Producteur {{ producteur.utilisateur.nom }} {{ producteur.utilisateur.prenom }}
                 </v-card-title>
                 <v-divider></v-divider>
-                <v-card-text v-html="producteur.description"></v-card-text>
-
+                <v-card-text>
+                  <p> Description: </p>
+                  {{producteur.description}}
+                </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text
                   class="adresse"
@@ -74,8 +76,8 @@
 import { onMounted } from 'vue';
     import { ref } from 'vue';
   import {useLoaderStore} from "@/store/loader";
-  import {useRouter} from "vue-router";
-  const router = useRouter();
+  //import {useRouter} from "vue-router";
+  //const router = useRouter();
 
   const loaderStore = useLoaderStore();
 
@@ -83,9 +85,9 @@ import { onMounted } from 'vue';
     window.open('https://www.google.fr/maps/search/' + adresse + '/', '_blank').focus();
   }
 
-  function openProducteur(producteurId) {
-    router.push({ name: 'Producteur', params: { id: producteurId }});
-  }
+  // function openProducteur(producteurId) {
+  //   router.push({ name: 'Producteur', params: { id: producteurId }});
+  // }
 
 
   const items = ref([
@@ -104,15 +106,9 @@ import { onMounted } from 'vue';
     const producteursStore = useProducteursStore();
     const {producteurs} = storeToRefs(producteursStore);
     const producteursFiltres = ref([]);
-    const search = ref('');
     const searchNom = ref('');
     const searchLocation = ref('');
-    const  headers = ref([
-          {title: 'Nom', key: 'nom'  },
-          {title: 'Date début', key: 'dateDebut'},
-          {title: 'Date fin', key: 'dateFin'},
-          {title: 'Adresse', key: 'adresse'  },
-        ]);
+    
     function filterProducteurs(){
         producteursFiltres.value = producteurs?.value?.filter(producteur => {
           const nomMatch = searchNom.value ? producteur.utilisateur.nom.toLowerCase().includes(searchNom.value) || producteur.utilisateur.prenom.toLowerCase().includes(searchNom.value) : true;
