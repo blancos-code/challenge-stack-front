@@ -34,12 +34,14 @@
             <v-btn
               class="connexion"
               prepend-icon="mdi-login"
+              :to="{name: 'ProfilPage'}"
             >
               Connexion
             </v-btn>
           <v-btn
             class="signup"
             prepend-icon="mdi-account"
+            :to="{name: 'ProfilPage'}"
           >
             S'inscrire
           </v-btn>
