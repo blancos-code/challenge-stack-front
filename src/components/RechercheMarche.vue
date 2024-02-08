@@ -37,6 +37,7 @@
       >
         <v-card
           v-for="marche in marchesFiltres"
+          v-bind:key="marche"
           class="mb-8 card"
           style="width: 48%;"
           @click.prevent="openMarche(marche.id)"

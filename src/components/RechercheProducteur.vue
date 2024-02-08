@@ -33,6 +33,7 @@
 
               <v-card
                 v-for="producteur in producteursFiltres"
+                v-bind:key="producteur"
                 class="mb-8 card"
                 style="width: 48%;"
                 @click.prevent="openProducteur(producteur.id)"
@@ -75,6 +76,8 @@
 import { onMounted } from 'vue';
     import { ref } from 'vue';
   import {useLoaderStore} from "@/store/loader";
+  import {useRouter} from "vue-router";
+  const router = useRouter();
 
   const loaderStore = useLoaderStore();
 
@@ -82,8 +85,8 @@ import { onMounted } from 'vue';
     document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
   }
 
-  function openProducteur(producteur) {
-    document.location.href = 'https://www.google.fr/'
+  function openProducteur(producteurId) {
+    router.push({ name: 'Producteur', params: { id: producteurId }});
   }
 
 

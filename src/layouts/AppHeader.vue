@@ -28,6 +28,7 @@
           <v-btn
             class="admin"
             icon="mdi-tools"
+            href="https://localhost:8000/admin"
             flat
           >
           </v-btn>

@@ -70,6 +70,17 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/Producteur/:id",
+    component: () => import("@/components/ProducteurPage.vue"),
+    children: [
+      {
+        path: "",
+        name: "Producteur",
+        component: () => import("@/components/ProducteurPage.vue"),
+      },
+    ],
+  },
 ];
 
 const router = createRouter({
