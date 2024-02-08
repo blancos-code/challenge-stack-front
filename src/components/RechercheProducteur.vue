@@ -45,10 +45,8 @@
                    Producteur {{ producteur.utilisateur.nom }} {{ producteur.utilisateur.prenom }}
                 </v-card-title>
                 <v-divider></v-divider>
-                <v-card-text>
-                  <b> Description: </b> <br>
-                  {{ producteur.description }}
-                </v-card-text>
+                <v-card-text v-html="producteur.description"></v-card-text>
+
                 <v-divider></v-divider>
                 <v-card-text
                   class="adresse"
