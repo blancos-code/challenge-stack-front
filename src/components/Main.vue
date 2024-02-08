@@ -32,6 +32,7 @@
           <v-btn
             color="white"
             class="ms-4 text-black"
+            :to="{name: 'RechercheProducteur'}"
           >
             Rencontrer un producteur
           </v-btn>

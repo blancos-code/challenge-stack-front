@@ -30,14 +30,33 @@
                     </v-col>
                 </v-row>
 
-            <!-- Résultats de la recherche -->
-            <v-data-table
-                :headers="headers"
-                :items="producteursFiltres"
-                :search="search"
-                class="elevation-1"
+              <v-card
+                v-for="producteur in producteursFiltres"
+                class="mb-8 card"
+                style="width: 48%;"
+                @click.prevent="openProducteur(producteur.id)"
+              >
+                <v-card-title
+                  class="text-green"
+                  style="background-color: rgba(0, 0, 0, 0.03)"
                 >
-            </v-data-table>
+                  Marché de {{ producteur.nom }}
+                </v-card-title>
+                <v-divider></v-divider>
+                <v-card-text>
+                </v-card-text>
+                <v-divider></v-divider>
+                <v-card-text
+                  class="adresse"
+                  @click.stop="searchMaps(producteur.adresse)"
+                  style="cursor: pointer;"
+                >
+                  <v-icon>
+                    mdi-map-marker
+                  </v-icon>
+                  Adresse: {{ producteur.nom }}
+                </v-card-text>
+              </v-card>
 
             </v-container>
 
@@ -52,7 +71,18 @@
     import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
     import { ref } from 'vue';
-    const items = ref([
+
+
+  function searchMaps(adresse) {
+    document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
+  }
+
+  function openProducteur(producteur) {
+    document.location.href = 'https://www.google.fr/'
+  }
+
+
+  const items = ref([
         {
           text: 'Accueil',
           disabled: false,

@@ -25,6 +25,12 @@
             Marchés
             </v-btn>
             </v-row>
+          <v-btn
+            class="admin"
+            icon="mdi-tools"
+            flat
+          >
+          </v-btn>
             <v-btn
               class="connexion"
               prepend-icon="mdi-login"
@@ -63,6 +69,12 @@ header {
 .connexion{
     position: absolute;
     right : 12rem;
+}
+
+.admin{
+  position: absolute;
+  right : 22rem;
+  top: 0.8em;
 }
 
 .signup {

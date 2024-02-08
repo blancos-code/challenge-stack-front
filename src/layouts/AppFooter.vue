@@ -1,6 +1,7 @@
 <template>
     <footer
-            style="background-color: #18542c; color:white; padding: 0.6em; position: absolute; bottom: 0; width: 100%;"
+            style="background-color: #18542c; color:white; padding: 0.6em; position:  fixed; bottom: 0; width: 100%;"
+
             class="d-flex flex-row align-center"
 
     >
@@ -31,7 +32,7 @@
 
 </script>
 <style>
-  footer{
+  footer {
     width: 100%;
   }
 </style>

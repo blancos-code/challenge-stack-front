@@ -49,13 +49,13 @@ const routes = [
     ],
   },
   {
-    path: "/Marches",
-    component: () => import("@/components/Marches.vue"),
+    path: "/Marche/:id",
+    component: () => import("@/components/Marche.vue"),
     children: [
       {
         path: "",
-        name: "Marches",
-        component: () => import("@/components/Marches.vue"),
+        name: "Marche",
+        component: () => import("@/components/Marche.vue"),
       },
     ],
   },
