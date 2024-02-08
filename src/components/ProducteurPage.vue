@@ -40,7 +40,6 @@
     async function getProducteurFromId(id) {
         producteur.value = await getProducteur(id);
     }
-    //getProducteurFromId(route.params.id);
     onMounted(() => {
       getProducteurFromId(route.params.id)
     })
