@@ -44,7 +44,6 @@
     }
 
     onMounted(() => {
-      getMarcheFromId(route.params.id)
     })
 
   </script>

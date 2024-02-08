@@ -60,12 +60,12 @@ const routes = [
     ],
   },
   {
-    path: "/Marche/:id",
+    path: "/Marche/",
     component: () => import("@/components/Marche.vue"),
     children: [
       {
         path: "",
-        name: "Marche",
+        name: "marche",
         component: () => import("@/components/Marche.vue"),
       },
     ],
