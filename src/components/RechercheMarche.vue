@@ -18,6 +18,7 @@
             type="date"
             @update:model-value="filteredMarkets()"
             outlined
+            clearable
           ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
@@ -26,6 +27,7 @@
             label="Adresse"
             outlined
             @update:model-value="filteredMarkets()"
+            clearable
           ></v-text-field>
         </v-col>
       </v-row>
@@ -80,6 +82,8 @@ import {useMarchesStore} from '@/store/marches';
 import {storeToRefs} from 'pinia';
 import {onMounted} from 'vue';
 import {ref} from 'vue';
+import {useRouter} from "vue-router";
+import {useLoaderStore} from "@/store/loader";
 
 const items = ref([
   {
@@ -93,6 +97,11 @@ const items = ref([
     href: 'recherchemarche'
   }
 ])
+
+const loaderStore = useLoaderStore();
+
+const router = useRouter();
+
 const primaryColor = '#18542c';
 const marcheStore = useMarchesStore();
 const {marches} = storeToRefs(marcheStore);
@@ -124,16 +133,18 @@ function searchMaps(adresse) {
   document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
 }
 
-function openMarche(marche) {
-  document.location.href = 'https://www.google.fr/'
+function openMarche(marcheId) {
+  router.push({ name: 'Marche', params: { id: marcheId }});
 }
 
 
 onMounted(async () => {
+  loaderStore.loading = true;
   await getMarches().then((res) => {
     marches.value = res["hydra:member"];
     filteredMarkets();
   });
+  loaderStore.loading = false;
 });
 </script>
 <style scoped>

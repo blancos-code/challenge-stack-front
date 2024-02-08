@@ -45,11 +45,19 @@
           </v-btn>
         </v-container>
     </header>
+      <v-progress-linear
+        color="green"
+        indeterminate
+        height="4"
+        :hidden="!loaderStore.loading"
+      ></v-progress-linear>
 </template>
-<script>
-export default {
-    name: 'AppHeader'
-}
+<script setup>
+
+import {useLoaderStore} from "@/store/loader";
+
+const loaderStore = useLoaderStore()
+
 </script>
 <style scoped>
 .btn-header{

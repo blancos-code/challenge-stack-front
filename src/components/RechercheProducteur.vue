@@ -17,6 +17,7 @@
                         label="Nom / Prénom"
                         @update:model-value="filterProducteurs()"
                         outlined
+                        clearable
                         ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
@@ -24,6 +25,7 @@
                         v-model="searchLocation"
                         label="Adresse"
                         outlined
+                        clearable
                         @update:model-value="filterProducteurs()"
                         ></v-text-field>
                     </v-col>
@@ -72,7 +74,9 @@
     import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
     import { ref } from 'vue';
+  import {useLoaderStore} from "@/store/loader";
 
+  const loaderStore = useLoaderStore();
 
   function searchMaps(adresse) {
     document.location.href = 'https://www.google.fr/maps/search/' + adresse + '/';
@@ -117,11 +121,13 @@ import { onMounted } from 'vue';
       }
 
       onMounted(async () => {
+        loaderStore.loading = true;
         await getProducteurs().then((res) => {
             producteurs.value = res["hydra:member"];
             console.log(producteurs.value)
             filterProducteurs()
           });
+        loaderStore.loading = false;
       });
   </script>
  <style scoped>
