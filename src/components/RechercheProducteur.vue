@@ -13,19 +13,18 @@
                 <v-row>
                     <v-col cols="12" md="6">
                         <v-text-field
-                        v-model="searchDate"
-                        label="Rechercher par date"
-                        type="date"
-                        @update:model-value="filteredMarkets()"
+                        v-model="searchNom"
+                        label="Nom / Prénom"
+                        @update:model-value="filterProducteurs()"
                         outlined
                         ></v-text-field>
                     </v-col>
                     <v-col cols="12" md="6">
                         <v-text-field
                         v-model="searchLocation"
-                        label="Rechercher"
+                        label="Adresse"
                         outlined
-                        @update:model-value="filteredMarkets()"
+                        @update:model-value="filterProducteurs()"
                         ></v-text-field>
                     </v-col>
                 </v-row>
@@ -40,21 +39,23 @@
                   class="text-green"
                   style="background-color: rgba(0, 0, 0, 0.03)"
                 >
-                  Marché de {{ producteur.nom }}
+                   Producteur {{ producteur.utilisateur.nom }} {{ producteur.utilisateur.prenom }}
                 </v-card-title>
                 <v-divider></v-divider>
                 <v-card-text>
+                  <b> Description: </b> <br>
+                  {{ producteur.description }}
                 </v-card-text>
                 <v-divider></v-divider>
                 <v-card-text
                   class="adresse"
-                  @click.stop="searchMaps(producteur.adresse)"
+                  @click.stop="searchMaps(producteur.utilisateur.adresse)"
                   style="cursor: pointer;"
                 >
                   <v-icon>
                     mdi-map-marker
                   </v-icon>
-                  Adresse: {{ producteur.nom }}
+                  Adresse: {{ producteur.utilisateur.adresse }}
                 </v-card-text>
               </v-card>
 
@@ -99,7 +100,7 @@ import { onMounted } from 'vue';
     const {producteurs} = storeToRefs(producteursStore);
     const producteursFiltres = ref([]);
     const search = ref('');
-    const searchDate = ref('');
+    const searchNom = ref('');
     const searchLocation = ref('');
     const  headers = ref([
           {title: 'Nom', key: 'nom'  },
@@ -107,36 +108,54 @@ import { onMounted } from 'vue';
           {title: 'Date fin', key: 'dateFin'},
           {title: 'Adresse', key: 'adresse'  },
         ]);
-    function filteredMarkets(){
+    function filterProducteurs(){
         producteursFiltres.value = producteurs?.value?.filter(producteur => {
-          const dateMatch = searchDate.value ? producteur.dateDebut.includes(searchDate.value) || producteur.dateFin.includes(searchDate.value) : true;
-          const locationMatch = searchLocation.value ? producteur.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
-          return locationMatch && dateMatch;
+          const nomMatch = searchNom.value ? producteur.utilisateur.nom.toLowerCase().includes(searchNom.value) || producteur.utilisateur.prenom.toLowerCase().includes(searchNom.value) : true;
+          const locationMatch = searchLocation.value ? producteur.utilisateur.adresse.toLowerCase().includes(searchLocation.value.toLowerCase()) : true; //compare strings in lower case
+          return locationMatch && nomMatch;
         })
       }
 
       onMounted(async () => {
         await getProducteurs().then((res) => {
             producteurs.value = res["hydra:member"];
-            filteredMarkets();
+            console.log(producteurs.value)
+            filterProducteurs()
           });
       });
   </script>
-  <style scoped>
+ <style scoped>
 
-  .v-application{
-    background-color: #efebe9 !important;
-  }
-  ::v-deep .v-breadcrumbs{
-    padding: 0 0 1rem 0;
-  }
+ .v-application {
+   background-color: #efebe9 !important;
+ }
 
-  h1{
-    color: v-bind(primaryColor);
-  }
+ ::v-deep .v-breadcrumbs {
+   padding: 0 0 1rem 0;
+ }
 
-  a {
-    color:v-bind(primaryColor);
-    text-decoration: none;
-  }
-  </style>
+ h1 {
+   color: v-bind(primaryColor);
+ }
+
+ a {
+   color: v-bind(primaryColor);
+   text-decoration: none;
+ }
+
+ .adresse:hover {
+   background-color: rgb(24, 84, 44);
+   color: white;
+ }
+
+ .card {
+   transition: box-shadow 0.3s ease;
+ }
+
+ .card:hover {
+   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Augmentation de l'ombre portée */
+   cursor: pointer;
+ }
+
+ </style>
+

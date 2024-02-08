@@ -46,6 +46,11 @@
             Marché de {{ marche.nom }}
           </v-card-title>
           <v-divider></v-divider>
+            <v-card-subtitle
+              class="mt-4"
+            >
+              Catégorie: {{ marche.categorie.nom }}
+            </v-card-subtitle>
           <v-card-text>
             <b> Ce marché à lieu du {{ formatDate(marche.dateDebut) }} au {{ formatDate(marche.dateFin) }} </b>
           </v-card-text>
