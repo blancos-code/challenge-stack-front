@@ -65,11 +65,14 @@
                     </table>
                     <a @click="deleteAccount()" class="delete-account">Supprimer mon compte</a>
                         </div>
+                        <div class="div-no-img" v-if="!utilisateur.image">
+                          <p class="no-image">Vous n'avez pas encore d'image de profil</p>
+                        </div>
                     <v-img
                         class="profilImage"
                         aspect-ratio="16/9"
                         cover
-                        src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+                        :src="utilisateur.image"
                     ></v-img>
                 </div>
                 
@@ -97,7 +100,7 @@
           href: 'profil'
         }
     ])
-
+    const utilisateur = ref('')
     const name = ref('Nom')
     const surname = ref('Prénom')
     const email = ref('votre.email@gmail.com')
@@ -107,7 +110,7 @@
         }
 
         function editSurname(){
-            //change surname
+          console.log('value', surname.value);
         }
 
         function editEmail(){
@@ -145,6 +148,15 @@
   }
   .flex{
     display: flex;
+  }
+.div-no-img{
+  display: flex;
+}
+  .no-image{
+    color: #18542c;
+    margin-left: 5rem;
+    margin-top: auto;
+    margin-bottom: auto;
   }
 
   h1{
