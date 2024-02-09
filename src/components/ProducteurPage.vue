@@ -16,16 +16,10 @@
                       </div>
                     </div>
                 </div>
-                <!--<img :src="producteur.utilisateur.image">-->
-                <img class="image-producteur" src="https://placehold.co/150" alt="">
+                <img class="image-producteur" :src="producteur.utilisateur.image" width="150">
               </div>
-               
-                
-                
-              
                 <p class="description-producteur" v-html="producteur.description"></p>
-
-                <div class="commentaires">
+                <div class="add-commentaires">
                   <div>
                     <v-text-field 
                     class="text-field-title" 
@@ -67,17 +61,19 @@
                   </div>
                   
                   
-                  <div v-for="comment in producteur.commentaireProducteurs">
+                  
+                </div>
+
+                <div v-for="comment in producteur.commentaireProducteurs" class="commentaires">
                     <div class="card text-start">
-                    <div class="card-body">
-                      <h4 class="card-title">{{comment.titre}}</h4>
-                      <em class="note-commentaire">{{comment.note}} / 5</em>
-                      <p class="card-text">{{comment.contenu}}</p>
-                      <em>- {{comment.redacteur.prenom }} {{comment.redacteur.nom }}</em>
+                      <div class="card-body">
+                        <h4 class="card-title">{{comment.titre}}</h4>
+                        <em class="note-commentaire">{{comment.note}} / 5</em>
+                        <p class="card-text">{{comment.contenu}}</p>
+                        <em>- {{comment.redacteur.prenom }} {{comment.redacteur.nom }}</em>
+                      </div>
                     </div>
                   </div>
-                  </div>
-                </div>
       
             </v-container>
       
@@ -179,8 +175,15 @@
 .note-commentaire{
   color: #18542c;
 }
+
+.add-commentaires{
+  margin-top: 2.5rem;
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
   .commentaires {
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     background-color: white;
     border-radius: 5px;
     padding: 15px;
