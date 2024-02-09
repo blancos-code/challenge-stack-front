@@ -31,11 +31,11 @@ export async function getMarche(id) {
   return response;
 }
 
-export async function addCommentMarche(payload) {
+export async function addCommentMarche(params, idMarche) {
   let response = "";
   try {
     await axios
-      .post(import.meta.env.VITE_API_URL + "/api/commentaire_marches", payload)
+      .get(import.meta.env.VITE_API_URL + "/api/add-commentaire-marche/" + idMarche, params)
       .then((res) => {
         response = res.data;
       });

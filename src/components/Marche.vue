@@ -1,7 +1,7 @@
 <template>
   <AppHeader/>
   <v-app>
-    <v-container class="mt-5" v-if="marche">
+    <v-container class="mt-5 mb-5" v-if="marche">
       <div class="flex">
         <div>
           <h1>{{ marche.nom }} - {{ marche.categorie.nom }}</h1>
@@ -79,7 +79,7 @@
             </v-textarea>
 
           <v-btn
-            @click="addNewComm()"
+            @click="addNewComm"
             style="margin-top: 0; background-color: #18542c; color: white"
             class="btn-send"
             elevation="0"
@@ -142,42 +142,23 @@ async function getProducteurFromId(id) {
 }
 
 async function addNewComm() {
-  // let payload =
-  // {
-  //   titre: newTitleComm.value,
-  //   note: parseInt(newNoteComm.value),
-  //   contenu: newContenuComm.value,
-  //   producteur: {
-  //     description: producteur.value.description,
-  //     utilisateur: {
-  //       nom: producteur.value.utilisateur.nom,
-  //       prenom: producteur.value.utilisateur.prenom,
-  //       email: producteur.value.utilisateur.email,
-  //       tel: producteur.value.utilisateur.tel,
-  //       adresse: producteur.value.utilisateur.adresse,
-  //       isBanned: producteur.value.utilisateur.isBanned
-  //     },
-  //     note: parseInt(producteur.value.note),
-  //     commentaireProducteurs: producteur.value.commentaireProducteurs,
-  //     prixProduits : producteur.value.prixProduits,
-  //     prixProduit: producteur.value.prixProduit
-  //   },
-  //   redacteur: {
-  //     nom: producteur.value.utilisateur.nom,
-  //     prenom: producteur.value.utilisateur.prenom,
-  //     email: producteur.value.utilisateur.email,
-  //     tel: producteur.value.utilisateur.tel,
-  //     adresse: producteur.value.utilisateur.adresse,
-  //     isBanned: producteur.value.utilisateur.isBanned
-  //   }
-  // };
-  let payload = '';
-  loaderStore.loading = true;
-  await addCommentMarche(payload).then((res) => {
-    console.log(res);
-  });
-  loaderStore.loading = false;
+  console.log("Création d'un commentaire")
 
+  const params = {
+    titre: newTitleComm.value,
+    note: parseInt(newNoteComm.value),
+    contenu: newContenuComm.value,
+  }
+
+  loaderStore.loading = true;
+  try {
+    await addCommentMarche(params, route.params.id).then((res) => {
+      console.log(res);
+    });
+  } catch (e) {
+    //
+  }
+  loaderStore.loading = false;
 }
 
 
