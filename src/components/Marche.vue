@@ -37,7 +37,7 @@
         >
           Dates
         </v-card-subtitle>
-          {{ marche.dateDebut }} à {{ marche.dateFin }}
+          du {{ formatDate(marche.dateDebut) }} au {{ formatDate(marche.dateFin) }}
       </p>
       <v-divider></v-divider>
       <div class="add-commentaires">
@@ -139,6 +139,9 @@ const newNoteComm = ref("");
 
 async function getProducteurFromId(id) {
   marche.value = await getMarche(id);
+}
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("fr-FR")
 }
 
 async function addNewComm() {
