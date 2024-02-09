@@ -16,7 +16,7 @@
                       </div>
                     </div>
                 </div>
-                <img class="image-producteur" :src="producteur.utilisateur.image" width="150">
+                <img class="image-producteur" :src="producteur.utilisateur.imageFile" width="150">
               </div>
                 <p class="description-producteur" v-html="producteur.description"></p>
                 <div class="add-commentaires">
@@ -127,7 +127,10 @@
               prenom: producteur.value.utilisateur.prenom,
               email: producteur.value.utilisateur.email,
               tel: producteur.value.utilisateur.tel,
-              adresse: producteur.value.utilisateur.adresse
+              adresse: producteur.value.utilisateur.adresse,
+              isBanned: producteur.value.utilisateur.isBanned,
+              imageName: producteur.value.utilisateur.imageName,
+              imageFile: producteur.value.utilisateur.imageFile
             },
             note: parseInt(producteur.value.note),
             commentaireProducteurs: producteur.value.commentaireProducteurs,
@@ -135,11 +138,12 @@
             prixProduit: producteur.value.prixProduit
           },
           redacteur: {
-            nom: "",
-            prenom: "",
-            email: "",
-            tel: "",
-            adresse: ""
+            nom: producteur.value.utilisateur.nom,
+            prenom: producteur.value.utilisateur.prenom,
+            email: producteur.value.utilisateur.email,
+            tel: producteur.value.utilisateur.tel,
+            adresse: producteur.value.utilisateur.adresse,
+            isBanned: producteur.value.utilisateur.isBanned
           }
         };
    

@@ -77,18 +77,11 @@
 import { onMounted } from 'vue';
     import { ref } from 'vue';
   import {useLoaderStore} from "@/store/loader";
-  //import {useRouter} from "vue-router";
-  //const router = useRouter();
-
   const loaderStore = useLoaderStore();
 
   function searchMaps(adresse) {
     window.open('https://www.google.fr/maps/search/' + adresse + '/', '_blank').focus();
   }
-
-  // function openProducteur(producteurId) {
-  //   router.push({ name: 'Producteur', params: { id: producteurId }});
-  // }
 
 
   const items = ref([

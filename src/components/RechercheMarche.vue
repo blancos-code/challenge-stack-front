@@ -40,7 +40,7 @@
           v-bind:key="marche"
           class="mb-8 card"
           style="width: 48%;"
-          @click.prevent="openMarche(marche.id)"
+          :to="{name: 'Marche', params: { id: marche.id }}"
         >
           <v-card-title
             class="text-green"
