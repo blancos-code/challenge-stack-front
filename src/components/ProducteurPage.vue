@@ -18,13 +18,22 @@
                   </div>
                 <img v-if="producteur.utilisateur.imageFile" class="image-producteur" :src="producteur.utilisateur.imageFile" width="150">
               </div>
-                <p class="description-producteur" v-html="producteur.description"></p>
+              <v-card-subtitle
+                class="ma-0 pa-0"
+              >
+                Description
+              </v-card-subtitle>
+                <p class="description-producteur" style="margin-top: 0px" v-html="producteur.description"></p>
 
 
                 <div class="add-commentaires">
+
                   <div>
-                    <v-text-field 
-                    class="text-field-title" 
+                    <h3>Commentaire</h3>
+                    <div class="write-comment">
+
+                    <v-text-field
+                    class="text-field-title"
                     style="width: 100%; margin: 2px"
                     placeholder="Le titre de votre commentaire"
                     label="Titre"
@@ -32,10 +41,23 @@
                     type="text"
                     outlined
                     clearable></v-text-field>
-                    <div class="write-comment">
-                      <v-text-field 
-                    class="text-field" 
-                    style="width: 90%; margin: 2px"
+                    <v-text-field
+                      class="note-field"
+                      placeholder="/5"
+                      v-model="newNoteComm"
+                      style="width: 10%; margin: 2px"
+                      :min="0"
+                      :max="5"
+                      label="Note"
+                      type="number"
+                      variant="outlined"
+                      clearable>
+
+                    </v-text-field >
+                </div>
+                      <v-text-field
+                    class="text-field"
+                    style="margin: 2px"
                     placeholder="Ecrire un commentaire à ce producteur"
                     label="Commentaire"
                     v-model="newContenuComm"
@@ -44,27 +66,12 @@
                     clearable>
 
                     </v-text-field>
-                    <v-text-field 
-                    class="note-field" 
-                    placeholder="/5"
-                    v-model="newNoteComm"
-                    style="width: 10%; margin: 2px"
-                    :min="0"
-                    :max="5"
-                    label="Note"
-                    type="number"
-                    outlined
-                    clearable>
-
-                    </v-text-field >
-                    
                     </div>
-                    <v-btn @click="addNewComm()" style="margin-top: 0; background-color: #18542c; color: white" class="btn-send">Envoyer</v-btn>
+                    <v-btn @click="addNewComm()" elevation="0" style="margin-top: 0; background-color: #18542c; color: white" class="btn-send">Envoyer</v-btn>
                   </div>
-                  
-                  
-                  
-                </div>
+
+
+
 
                 <div v-for="comment in producteur.commentaireProducteurs" class="commentaires">
                     <div class="card text-start">
@@ -76,9 +83,9 @@
                       </div>
                     </div>
                   </div>
-      
+
             </v-container>
-      
+
     </v-app>
     <AppFooter />
   </template>
@@ -111,13 +118,13 @@
    const newContenuComm = ref('');
    const newTitleComm = ref("");
    const newNoteComm = ref("");
-     
+
     async function getProducteurFromId(id) {
         producteur.value = await getProducteur(id);
     }
 
     async function addNewComm(){
-        let payload = 
+        let payload =
         {
           titre: newTitleComm.value,
           note: parseInt(newNoteComm.value),
@@ -148,17 +155,17 @@
             isBanned: producteur.value.utilisateur.isBanned
           }
         };
-   
+
         loaderStore.loading = true;
         await addCommentProducteur(payload).then((res) => {
             producteur.value = res["hydra:member"];
             console.log(producteur.value)
         });
         loaderStore.loading = false;
-      
+
     }
 
-  
+
     onMounted(() => {
       getProducteurFromId(route.params.id)
     })
