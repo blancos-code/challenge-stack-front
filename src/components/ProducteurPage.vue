@@ -15,10 +15,12 @@
                         <img src="../assets/star.png" :alt="n">
                       </div>
                     </div>
-                </div>
-                <img class="image-producteur" :src="producteur.utilisateur.imageFile" width="150">
+                  </div>
+                <img v-if="producteur.utilisateur.imageFile" class="image-producteur" :src="producteur.utilisateur.imageFile" width="150">
               </div>
                 <p class="description-producteur" v-html="producteur.description"></p>
+
+
                 <div class="add-commentaires">
                   <div>
                     <v-text-field 
